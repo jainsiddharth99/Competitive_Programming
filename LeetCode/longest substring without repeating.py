@@ -18,4 +18,4 @@ def lengthOfLongestSubstring(s: str) -> int:
         return (longest_sub)
                 
 s='pwwkew'          
-lengthOfLongestSubstring(s)
+print(lengthOfLongestSubstring(s))
