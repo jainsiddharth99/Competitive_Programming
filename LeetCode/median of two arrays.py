@@ -12,7 +12,6 @@ def findMedianSortedArrays(nums1, nums2):
         median=len(nums3)//2
         median=nums3[median]  
     return median   
-# if __name__=="__main__":
 nums1=[1,2]
 nums2=[3,4]
 print(findMedianSortedArrays(nums1,nums2))
