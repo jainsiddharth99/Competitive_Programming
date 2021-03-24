@@ -1,5 +1,5 @@
 def longestPalindrome(s):
-    longest=0
+    longest=''
     length=0
     for i in range(len(s)):
         l,r=i,i
