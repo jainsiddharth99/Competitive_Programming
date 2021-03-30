@@ -15,6 +15,7 @@
 #         ans[i]=''.join(ans[i])
 #     return ''.join(ans)
 
+
 # second method
 def convert(s,numRows):
     if numRows==1:
