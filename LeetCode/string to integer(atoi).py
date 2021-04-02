@@ -1,3 +1,4 @@
+
 def myAtoi(s):
         s=s.strip()
         if s[0]=='-':
@@ -5,7 +6,7 @@ def myAtoi(s):
             for i in s:
                 if i=='.':
                     break
-                if i.isdigit():
+                elif i.isdigit():
                     num+=i
             
             s='-',num
@@ -18,7 +19,9 @@ def myAtoi(s):
         else:
             num=""
             for i in s:
-                if i.isdigit():
+                if i=='.':
+                    break
+                elif i.isdigit():
                     num+=i
             s=int(num)
             return s if s<=(2**31-1) else 2**31
