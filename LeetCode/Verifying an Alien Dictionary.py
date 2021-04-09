@@ -12,6 +12,6 @@ def isAlienSorted(words,order):
                     return False
                 break
     return True
-words=["apple","app"]
+words=["app","app"]
 order="abcdefghijklmnopqrstuvwxyz"
 print(isAlienSorted(words,order))
