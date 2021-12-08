@@ -14,5 +14,4 @@ class Solution(object):
 
                 memo[i, j] = ans
             return memo[i, j]
-
         return dp(0, 0)
