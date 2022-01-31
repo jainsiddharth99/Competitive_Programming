@@ -9,4 +9,10 @@ print(max(sum(acc) for acc in accounts))
 #             a=sum(i)
 #             t.append(a)
 #         return max(t)
+
+# ------------------------or------------------------
+
+# class Solution:
+#     def maximumWealth(self, accounts: List[List[int]]) -> int:
+#         return max(sum(i) for i in accounts)
         
