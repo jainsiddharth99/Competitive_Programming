@@ -13,11 +13,10 @@ while len(p)>=len(t)+1 and i<=len(s)-1:
             l.append(i-len(p))
             t=""
             i=i-len(p)+1
-            print(t)
         else:
             t=""
             i=i-len(p)+1
-print(t)
+prin
 print(l)    
     
 # class Solution:
