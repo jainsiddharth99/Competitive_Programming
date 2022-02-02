@@ -16,7 +16,6 @@ while len(p)>=len(t)+1 and i<=len(s)-1:
         else:
             t=""
             i=i-len(p)+1
-prin
 print(l)    
     
 # class Solution:
