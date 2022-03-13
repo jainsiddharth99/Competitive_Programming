@@ -1,6 +1,5 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        b=['(','[','{']
         dic={'(':')','[':']','{':'}'}
         lt=[]
         for i in s:
