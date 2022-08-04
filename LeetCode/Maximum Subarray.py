@@ -1,18 +1,22 @@
 
 def maxSubArray(nums: list[int]) -> int:
-    currsum=nums[0]
-    n= len(nums)
-    # base case     
-    # return num[0] if len(nums)==1
-    if len(nums)==1 : return nums[0]
+    maxsum=currsum=nums[0]
     
-    for i in range(n):
-        for j in range(i,n):
-            if sum(nums[i:j+1]) > currsum:
-                currsum = sum(nums[i:j+1])
-                print(currsum ,'val', nums[i],nums[j])
-    return currsum
+    n= len(nums)
+    # base case    
+    
+    for i in range(1,n):
+        if currsum+nums[i]>nums[i]:
+            currsum=currsum+nums[i]
+        else:
+            currsum=nums[i]
+        
+        if currsum>maxsum:
+            maxsum=currsum
+        
+        
+    return maxsum
 
-nums = [-2,1]
+nums = [-2,1,-3,4,-1,2,1,-5,4]
 ans=maxSubArray(nums)
 print (ans)
