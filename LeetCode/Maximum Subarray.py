@@ -1,19 +1,18 @@
 
-def maxv(nums):
-    res=0
-    current=0
-    n=len(nums)
+def maxSubArray(nums: list[int]) -> int:
+    currsum=nums[0]
+    n= len(nums)
+    # base case     
+    # return num[0] if len(nums)==1
+    if len(nums)==1 : return nums[0]
+    
     for i in range(n):
-        for j in range(i,n+1):
-            if j<n and nums[i]+nums[j]>current :
-                val=nums[i]+nums[j]
-                current+=val
-                
-            if j<n and nums[i]+nums[j]<current:
-                res=0  
-    return res
-nums = [-2,1,-3,4,-1,2,1,-5,4]
-u=maxv(nums)
-print(u)
-    
-    
+        for j in range(i,n):
+            if sum(nums[i:j+1]) > currsum:
+                currsum = sum(nums[i:j+1])
+                print(currsum ,'val', nums[i],nums[j])
+    return currsum
+
+nums = [-2,1]
+ans=maxSubArray(nums)
+print (ans)
