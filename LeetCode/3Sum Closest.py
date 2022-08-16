@@ -1,7 +1,8 @@
 def threeSumClosest(nums,target):
     nums.sort()
     currsum=0
-    closestsum=float("inf")
+    # closestsum=float("inf")
+    closestsum=nums[0]+nums[1]+nums[2]
     n=len(nums)
     # brute force
     # for i in range(0,n):
@@ -19,13 +20,13 @@ def threeSumClosest(nums,target):
         
         while j<k:
             currsum=nums[i]+nums[j]+nums[k]
-            if abs(closestsum-target)>abs(currsum-target):
+            diff=abs(currsum-target)
+            if abs(closestsum-target)>diff:
                 closestsum=currsum
             if currsum<target:
                 j+=1
             else:    
                 k-=1
-
     
     
     return closestsum        
