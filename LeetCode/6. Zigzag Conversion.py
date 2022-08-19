@@ -1,19 +1,19 @@
 # brute force
-# def convert(s,numRows):
-#     if numRows==1:
-#         return s
-#     row=0
-#     ans=[[]for i in range(numRows)]
-#     carry=-1
+def convert(s,numRows):
+    if numRows==1:
+        return s
+    row=0
+    ans=[[]for i in range(numRows)]
+    carry=-1
     
-#     for j in s:
-#         ans[row].append(j)
-#         if row==0 or row==numRows-1:
-#             carry *=-1
-#         row += carry
-#     for i in range(len(ans)):
-#         ans[i]=''.join(ans[i])
-#     return ''.join(ans)
+    for j in s:
+        ans[row].append(j)
+        if row==0 or row==numRows-1:
+            carry *=-1
+        row += carry
+    for i in range(len(ans)):
+        ans[i]=''.join(ans[i])
+    return ''.join(ans)
 
 
 # second method
@@ -33,4 +33,4 @@ def convert(s,numRows):
     return ''.join(ans)
 
 s='paypalishiring'
-print(convert(s,3))
+print(convert(s,4))
