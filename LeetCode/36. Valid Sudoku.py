@@ -1,16 +1,30 @@
 def isValidSudoku(board):
     row={}
     column={}
-    box={}
+    box=[]
+    
+    
+    for i in range(0, 9, 3):
+        for j in range(0, 9, 3):
+            box.append(board[i][j:j+3] + board[i+1][j:j+3] + board[i+2][j:j+3])
+    l='.'       
+    for k in box:
+        while l in k:
+            
+            k.remove(l)          
+                
+    
+    
     for i in range(1,10):
         row[i]={}
         column[i]={}
-        box[i]={}
+
     for i in range(1,10):
         for j in range(1,10):
             row[i][j]=0
             column[i][j]=0
-            box[i][j]=0
+
+    
             
     #print (row)
     for i in range(9):
@@ -19,28 +33,35 @@ def isValidSudoku(board):
             if cur !='.':
                 cur=int(cur)
                 # for row
+                if cur in row[i+1] and row[i+1][cur]==1:
+                    return False
                 if cur in row[i+1] and row[i+1][cur]==0:
                     row[i+1][cur]+=1
-                    # for column
+                
+                  
+                
+                # for column
+                if cur in column[j+1] and column[j+1][cur]==1:
+                    return False
                 if cur in column[j+1] and column[j+1][cur]==0:
                     column[j+1][cur]+=1
-            else:
-                pass
+    count=0
+    for i in range(1,10):
+        for j in range(1,10):
+            if row[i][j]!=0:
+                count+=1
+    if count==0: return True
                 
-    return column
+                
+    for m in box:
+        if len(m)-len(set(m))!=0:
+            return False                         
+                        
+    return True
                 
 
 
 
-board = [["8","3",".",".","7",".",".",".","."]
-,["6",".",".","1","9","5",".",".","."]
-,[".","9","8",".",".",".",".","6","."]
-,["8",".",".",".","6",".",".",".","3"]
-,["4",".",".","8",".","3",".",".","1"]
-,["7",".",".",".","2",".",".",".","6"]
-,[".","6",".",".",".",".","2","8","."]
-,[".",".",".","4","1","9",".",".","5"]
-,[".",".",".",".","8",".",".","7","9"]]
-
+board = [[".",".",".",".","5",".",".","1","."],[".","4",".","3",".",".",".",".","."],[".",".",".",".",".","3",".",".","1"],["8",".",".",".",".",".",".","2","."],[".",".","2",".","7",".",".",".","."],[".","1","5",".",".",".",".",".","."],[".",".",".",".",".","2",".",".","."],[".","2",".","9",".",".",".",".","."],[".",".","4",".",".",".",".",".","."]]
 ans=isValidSudoku(board)
 print (ans)
