@@ -17,6 +17,6 @@ def permute(nums):
     return res
 
 
-nums = [1, 2, 1]
+nums = [3, 2, 1]
 a = permute(nums)
 print(a)
