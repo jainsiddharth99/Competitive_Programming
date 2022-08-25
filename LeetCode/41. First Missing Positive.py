@@ -1,4 +1,4 @@
 def firstMissingPositive(nums):
-    pass
 
-nums=[1,2,0]
+
+nums = [3, 4-1, 1]
