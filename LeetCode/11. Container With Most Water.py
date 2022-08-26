@@ -1,10 +1,25 @@
 def maxArea(height):
-    area=[]
-    for i in range(len(height)):
-        for j in range(i+1,len(height)):
-            k=min(height[i],height[j])*(j-i)
-            area.append(k)
-    return max(area)
+    n = len(height)
+    res = 0
+    l = 0
+    r = n-1
+    while l < r:
+        area = min(height[l], height[r])*(r-l)
+        res = max(res, area)
 
-height=[1,8,6,2,5,4,8,3,7]
+        if height[l] < height[r]:
+            l += 1
+        else:
+            r -= 1
+
+    return res
+    # area=[]
+    # for i in range(len(height)):
+    #     for j in range(i+1,len(height)):
+    #         k=min(height[i],height[j])*(j-i)
+    #         area.append(k)
+    # return max(area)
+
+
+height = [1, 2, 1]
 print(maxArea(height))
