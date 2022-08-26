@@ -1,4 +1,5 @@
 def firstMissingPositive(nums):
+    # * edge cases
 
 
-nums = [3, 4-1, 1]
+nums = [3, 0, 1]
