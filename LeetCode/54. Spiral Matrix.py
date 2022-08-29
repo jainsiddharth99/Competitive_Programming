@@ -53,6 +53,19 @@ def spiral(matrix):
     total = len(matrix)*len(matrix[0])
     count = 0
     res = []
+
+    """
+    Matrix = [  [1,2,3,4,5],
+                [6,7,8,9,10],
+                [11,12,13,14,15]]
+                
+                now matrix[0] is our start row
+                it start is 0 to end_col== -4
+                
+                for first col -[1,6,11]
+                start is 0 and end is end row->2
+    """
+
     while count < total:
 
         for i in range(start_row, end_col+1):
