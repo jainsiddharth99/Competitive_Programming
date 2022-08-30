@@ -6,12 +6,13 @@ def canjump(nums):
     #         target=i
     # return target==0
 
-    j = 0
-    for i, num in enumerate(nums):
-        if i > j:
+    n = len(nums)
+    target_index = n-1
+    curr_max_index = 0
+    for i in range(n):
+        if i > curr_max_index:
             return False
-        j = max(j, num+i)
-
+        curr_max_index = max(i+nums[i], curr_max_index)
     return True
 
 
