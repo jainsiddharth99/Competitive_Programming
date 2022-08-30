@@ -16,6 +16,20 @@ def insert(intervals, newInterval):
 
     return res
 
+    # s, e = newInterval
+    # res = []
+    # for i in range(len(intervals)):
+    #     if intervals[i][1] < newInterval.start:
+    #         res.append(i)
+    #     elif intervals[i][0] > newInterval.end:
+    #         res.append(newInterval)
+    #         return res+intervals[i:]
+    #     else:
+    #         newInterval.start = min(newInterval.start, intervals[i][0])
+    #         newInterval.end = max(newInterval.end, intervals[i][1])
+    # res.append([s, e])
+    # return res
+
 
 intervals = [[1, 3], [6, 9]]
 newInterval = [2, 5]
