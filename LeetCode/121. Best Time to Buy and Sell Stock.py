@@ -1,12 +1,26 @@
 def maxProfit(prices):
+    # profit = 0
+    # n = len(prices)
+    # buy = prices[0]
+    # for i in range(n):
+    #     profit = max(profit, prices[i]-buy)
+    #     buy = min(buy, prices[i])
+
+    # return profit
+
+    # 2nd try
     profit = 0
-    n = len(prices)
     buy = prices[0]
-    for i in range(n):
+    for i in range(1, len(prices)):
         profit = max(profit, prices[i]-buy)
         buy = min(buy, prices[i])
 
     return profit
+
+    # buy, ans = float('inf'), 0
+    # for p in prices:
+    # 	buy, ans = min(buy, p), max(ans, p-buy)
+    # return ans
 
 
 prices = [7, 1, 5, 3, 6, 4]
