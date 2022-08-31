@@ -13,7 +13,7 @@ def maxprofit(prices):
     return profit
 
 
-prices = [7, 6, 4, 3, 1]
+prices = [1, 2, 3, 4, 5]
 print(maxprofit(prices))
 
 
