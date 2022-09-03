@@ -13,5 +13,5 @@ def nearestValidPoint(x: int, y: int, points: list[list[int]]) -> int:
 
 x = 3
 y = 4
-points = [[3, 4]]
+points = [[1, 2], [3, 1], [2, 4], [2, 3], [4, 4]]
 print(nearestValidPoint(x, y, points))
