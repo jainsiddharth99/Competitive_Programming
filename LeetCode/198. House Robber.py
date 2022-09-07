@@ -1,8 +1,15 @@
 def rob(nums: list[int]) -> int:
-    pass
+    rob1, rob2 = 0, 0
+
+    for n in nums:
+        tmp = max(rob1+n, rob2)
+        rob1 = rob2
+        rob2 = tmp
+
+    return rob2
 
 
-nums = [1, 2, 3, 1]
+nums = [2, 7, 9, 3, 1]
 print(rob(nums))
 """
 Example 1:
