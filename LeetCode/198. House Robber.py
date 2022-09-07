@@ -1,12 +1,23 @@
 def rob(nums: list[int]) -> int:
-    rob1, rob2 = 0, 0
+    # rob1, rob2 = 0, 0
 
-    for n in nums:
-        tmp = max(rob1+n, rob2)
-        rob1 = rob2
-        rob2 = tmp
+    # for n in nums:
+    #     tmp = max(rob1+n, rob2)
+    #     rob1 = rob2
+    #     rob2 = tmp
 
-    return rob2
+    # return rob2
+
+    # another one
+    n = len(nums)
+    dp = [0]*(n+1)
+
+    dp[1] = nums[0]
+
+    for i in range(1, n):
+        dp[i+1] = max(dp[i], dp[i-1]+nums[i])
+
+    return dp[n]
 
 
 nums = [2, 7, 9, 3, 1]
