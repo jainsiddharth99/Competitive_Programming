@@ -1,13 +1,26 @@
 def lengthOfLIS(nums: list[int]) -> int:
-    n = len(nums)
-    dp = [1]*n
-    for i in range(n-2, -1, -1):
-        for j in range(i+1, n):
+    # n = len(nums)
+    # dp = [1]*n
+    # for i in range(n-2, -1, -1):
+    #     for j in range(i+1, n):
 
-            if nums[i] < nums[j]:
-                dp[i] = max(dp[i], 1+dp[j])
+    #         if nums[i] < nums[j]:
+    #             dp[i] = max(dp[i], 1+dp[j])
 
-    return max(dp)
+    # return max(dp)
+    tails = [0] * len(nums)
+    size = 0
+    for x in nums:
+        i, j = 0, size
+        while i != j:
+            m = (i + j) // 2
+            if tails[m] < x:
+                i = m + 1
+            else:
+                j = m
+        tails[i] = x
+        size = max(i + 1, size)
+    return size
 
 
 nums = [0, 1, 0, 3, 2, 3]
