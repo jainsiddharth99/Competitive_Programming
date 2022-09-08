@@ -11,7 +11,7 @@ def gameOfLife(board: list[list[int]]) -> None:
             for l, r in dirs:
                 l += i
                 r += j
-                if 0 <= l < row and 0 <= r < col and abs(board[l][r]) == 1:
+                if 0 <= l < row and 0 <= r < col and board[l][r] == 1:
                     count += 1
             if board[i][j] == 1:
                 if count < 2:
