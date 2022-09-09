@@ -81,6 +81,23 @@ class LikedList:
         for i in data_list:
             self.insert_end(i)
 
+    def insert_after_value(self, data_after, data_to_insert):
+        val = self.head
+        while val:
+            if val.data == data_after:
+                newNode = Node(data_to_insert, val.next)
+                val.next = newNode
+                break
+            val = val.next
+
+    def remove_by_value(self, data):
+        val = self.head
+        while val:
+            if val.next.data == data:
+                val.next = val.next.next
+                break
+            val = val.next
+
 
 if __name__ == '__main__':
     lt = LikedList()
@@ -106,4 +123,9 @@ if __name__ == '__main__':
 
     print('removing index 4 -- currently last index')
     lt.remove_at(4)
+    lt.print_all()
+    lt.insert_after_value(3, 8)
+    lt.print_all()
+    print('Removing value 8')
+    lt.remove_by_value(8)
     lt.print_all()
