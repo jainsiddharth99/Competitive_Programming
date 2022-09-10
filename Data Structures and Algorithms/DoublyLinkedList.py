@@ -95,6 +95,7 @@ class DoublyLinkedList:
             val = self.head
             self.head = val.next
             self.head.prev = None
+            return
 
         val = self.head
 
