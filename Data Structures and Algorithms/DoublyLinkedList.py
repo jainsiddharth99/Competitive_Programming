@@ -37,7 +37,7 @@ class DoublyLinkedList:
         val = self.head
         while val.next:
             c += 1
-            val.next
+            val = val.next
         return c
 
     def insert_beg(self, data):
@@ -71,9 +71,12 @@ class DoublyLinkedList:
         while val:
             if c == index-1:
                 newNode = Node(data, val.next, val)
-                if newNode.next:
-                    newNode.next.prev = newNode
-                val = val.next
+                if val.next:
+                    val.next.prev = newNode
+                val.next = newNode
+                # if newNode.next:
+                #     newNode.next.prev = newNode
+                # val = val.next
 
                 break
 
@@ -85,11 +88,15 @@ class DoublyLinkedList:
         for i in data_list:
             self.insert_end(i)
 
+    def remove_at(self, index):
+
 
 if __name__ == '__main__':
     d = DoublyLinkedList()
     d.insert_all([1, 2, 3, 4])
     d.print_forward()
     d.print_backward()
-    d.insert_at(6)
+    print(d.get_length())
+
+    d.insert_at(6, 4)
     d.print_forward()
