@@ -89,6 +89,48 @@ class DoublyLinkedList:
             self.insert_end(i)
 
     def remove_at(self, index):
+        if index < 0 or index > self.get_length():
+            raise Exception('Invalid Index')
+        if index == 0:
+            val = self.head
+            self.head = val.next
+            self.head.prev = None
+
+        val = self.head
+
+        c = 0
+        while val:
+            if c == index-1:
+
+                if val.next.next:
+                    val.next = val.next.next
+                    val.next.next.prev = val
+                    break
+                val.next = None
+                break
+            val = val.next
+            c += 1
+
+    def insert_after_value(self, data_after, data_to_insert):
+        val = self.head
+        while val:
+            if val.data == data_after:
+                newNode = Node(data_to_insert, val.next, val)
+                if val.next:
+                    val.next.prev = newNode
+                val.next = newNode
+                break
+            val = val.next
+
+    def remove_by_value(self, data):
+        val = self.head
+        while val:
+            if val.next.data == data:
+                val.next = val.next.next
+                val.next.prev = val
+
+                break
+            val = val.next
 
 
 if __name__ == '__main__':
@@ -100,3 +142,10 @@ if __name__ == '__main__':
 
     d.insert_at(6, 4)
     d.print_forward()
+    d.remove_at(4)
+    d.print_forward()
+    d.insert_after_value(2, 8)
+    d.print_forward()
+    d.remove_by_value(3)
+    d.print_forward()
+    d.print_backward()
