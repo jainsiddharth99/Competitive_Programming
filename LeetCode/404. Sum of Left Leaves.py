@@ -9,7 +9,7 @@ class Solution:
         total = 0
         if root is None:
             return 0
-        if root.left:
+        if root.left and root.left.left is None and root.left.right is None:
             total += root.left.val
 
         total += self.sumOfLeftLeaves(root.left)
