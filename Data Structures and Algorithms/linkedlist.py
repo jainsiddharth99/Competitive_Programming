@@ -98,6 +98,16 @@ class LikedList:
                 break
             val = val.next
 
+    def swap2(self):
+        val = self.head
+        node = Node(None, self.head)
+        prev = node
+        while val:
+            prev.next = val.next
+            val.next = val.next.next
+            prev.next.next = val
+            prev, val = val, val.next
+
 
 if __name__ == '__main__':
     lt = LikedList()
@@ -128,4 +138,5 @@ if __name__ == '__main__':
     lt.print_all()
     print('Removing value 8')
     lt.remove_by_value(8)
+
     lt.print_all()
