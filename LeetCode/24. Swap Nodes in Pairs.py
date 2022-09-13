@@ -20,3 +20,15 @@ class Solution:
 #                 tmp.val,tmp.next.val=tmp.next.val,tmp.val
 #             tmp=tmp.next.next
 #         return head
+
+
+# class Solution:
+#     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         dummy = ListNode(None, head)
+#         prev, val = dummy, head
+#         while val and val.next:
+#             prev.next = val.next
+#             val.next = val.next.next
+#             prev.next.next = val
+#             prev, val = val, val.next
+#         return dummy.next
