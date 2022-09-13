@@ -108,6 +108,31 @@ class LikedList:
                 val.data, val.next.data = val.next.data, val.data
             val = val.next.next
 
+    def rev_list(self):
+        prev, nxt, curr = None, None, self.head
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        self.head = prev
+
+    def rev_k(self, head, k):
+        if head is None or k < 2:
+            return None
+
+        prev, next, val = None, None, head
+        count = 0
+        while val is not None and count < k:
+            next = val.next
+            val.next = prev
+            prev = val
+            val = next
+            count += 1
+        if next is not None:
+            head.next = self.rev_k(next, k)
+        return prev
+
 
 if __name__ == '__main__':
     lt = LikedList()
@@ -138,5 +163,5 @@ if __name__ == '__main__':
     lt.print_all()
     print('Removing value 8')
     lt.remove_by_value(8)
-    lt.swap2()
+    lt.head = lt.rev_k(lt.head, 3)
     lt.print_all()
