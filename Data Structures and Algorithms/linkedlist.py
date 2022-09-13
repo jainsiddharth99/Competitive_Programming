@@ -133,6 +133,17 @@ class LikedList:
             head.next = self.rev_k(next, k)
         return prev
 
+    def rotate(self, k):
+        for i in range(k):
+            val = self.head
+            while val.next.next:
+                val = val.next
+
+            val.next.next = self.head
+
+            self.head = val.next
+            val.next = None
+
 
 if __name__ == '__main__':
     lt = LikedList()
@@ -163,5 +174,6 @@ if __name__ == '__main__':
     lt.print_all()
     print('Removing value 8')
     lt.remove_by_value(8)
-    lt.head = lt.rev_k(lt.head, 3)
+    # lt.head = lt.rev_k(lt.head, 3)
+    lt.rotate(2)
     lt.print_all()
