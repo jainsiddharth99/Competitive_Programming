@@ -100,13 +100,13 @@ class LikedList:
 
     def swap2(self):
         val = self.head
-        node = Node(None, self.head)
-        prev = node
-        while val:
-            prev.next = val.next
-            val.next = val.next.next
-            prev.next.next = val
-            prev, val = val, val.next
+        if val is None:
+            return
+
+        while val and val.next:
+            if val.data != val.next.data:
+                val.data, val.next.data = val.next.data, val.data
+            val = val.next.next
 
 
 if __name__ == '__main__':
@@ -138,5 +138,5 @@ if __name__ == '__main__':
     lt.print_all()
     print('Removing value 8')
     lt.remove_by_value(8)
-
+    lt.swap2()
     lt.print_all()
