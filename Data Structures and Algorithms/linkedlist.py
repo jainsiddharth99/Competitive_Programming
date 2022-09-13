@@ -144,7 +144,7 @@ class LikedList:
             self.head = val.next
             val.next = None
 
-    def remove_duplicates(self):
+    def remove_duplicates1(self):
 
         prev = self.head
         curr = self.head.next
@@ -189,6 +189,8 @@ if __name__ == '__main__':
     lt.remove_by_value(8)
     # lt.head = lt.rev_k(lt.head, 3)
     # lt.rotate(2)
-    lt.insert_end(4)
-    lt.remove_duplicates()
+    lt.insert_beg(1)
+
+    lt.insert_beg(1)
+    lt.remove_duplicates1()
     lt.print_all()
