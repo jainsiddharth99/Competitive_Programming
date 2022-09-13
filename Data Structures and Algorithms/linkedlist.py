@@ -144,6 +144,19 @@ class LikedList:
             self.head = val.next
             val.next = None
 
+    def remove_duplicates(self):
+
+        prev = self.head
+        curr = self.head.next
+        while curr:
+            if curr.data == prev.data:
+                prev.next = curr.next
+                curr = curr.next
+
+            else:
+                prev = curr
+                curr = curr.next
+
 
 if __name__ == '__main__':
     lt = LikedList()
@@ -175,5 +188,7 @@ if __name__ == '__main__':
     print('Removing value 8')
     lt.remove_by_value(8)
     # lt.head = lt.rev_k(lt.head, 3)
-    lt.rotate(2)
+    # lt.rotate(2)
+    lt.insert_end(4)
+    lt.remove_duplicates()
     lt.print_all()
