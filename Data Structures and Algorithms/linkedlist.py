@@ -117,26 +117,6 @@ class LikedList:
             curr = nxt
         self.head = prev
 
-    def rev_between(self, l, r):
-        val = self.head
-        while val.next:
-            if val.data == l:
-                prev = val
-                curr = val.next
-                break
-            val = val.next
-
-        next = None
-        while curr:
-
-            next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
-            if curr.data == r:
-                break
-        self.head = prev
-
     def rev_k(self, head, k):
         if head is None or k < 2:
             return None
@@ -213,5 +193,4 @@ if __name__ == '__main__':
 
     lt.insert_beg(1)
     lt.remove_duplicates1()
-    lt.rev_between(1, 4)
     lt.print_all()
