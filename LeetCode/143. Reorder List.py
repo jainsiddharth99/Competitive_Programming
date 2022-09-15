@@ -30,10 +30,16 @@ class Solution:
         left, right = head, r_head
 
         while right.next:
+            # we cretaed next element as tmp
             tmp = left.next
             left.next = right
-            left = tmp
 
-            tmp = right.next
-            right.next = left
-            right = tmp
+            # we create tmp2 for next since it will replaced in 2nd step
+            tmp2 = right.next
+            # pointing to first temp
+            right.next = tmp
+
+            # we increase the pointer by one --means sice mp and tmp2
+            # were next of these
+            left = tmp
+            right = tmp2
