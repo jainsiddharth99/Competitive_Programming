@@ -24,3 +24,23 @@ class Solution:
 
             head = head.next
         return res[::-1]
+
+
+class Solution:
+    def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
+        s = [0]
+        lt = []
+        prev, next = None, None
+        while head:
+            lt.append(head.val)
+            head = head.next
+        n = len(lt)
+        res = [0]*n
+
+        for i in range(n-1, -1, -1):
+            curr = lt[i]
+            while s[-1] != 0 and s[-1] <= curr:
+                s.pop()
+            res[i] = s[-1]
+            s.append(curr)
+        return res
