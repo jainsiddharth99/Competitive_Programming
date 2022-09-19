@@ -36,3 +36,26 @@ class Solution:
         start.next, end.next = end.next, start.next
 
         return dummy.next
+
+
+class Solution:
+    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        cur = head
+        c = 0
+        while cur:
+            c += 1
+            cur = cur.next
+
+        endk = c-k+1
+        c = 1
+        cur = head
+        while cur:
+            if c == k:
+                start = cur
+            if c == endk:
+                end = cur
+            c += 1
+            cur = cur.next
+
+        start.val, end.val = end.val, start.val
+        return head
