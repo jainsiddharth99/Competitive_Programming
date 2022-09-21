@@ -27,15 +27,15 @@ def trap(height: list[int]) -> int:
     we create two list which iterate left and another from end
     we add result according height filled(we select minimum)
     """
-    level = []
-    left, right = 0, 0
-    for i in height:
-        left = max(left, i)
-        level += [left]
-    for j, h in reversed(list(enumerate(height))):
-        right = max(right, h)
-        level[j] = (min(right, level[j]))-h
-    return sum(level)
+    # level = []
+    # left, right = 0, 0
+    # for i in height:
+    #     left = max(left, i)
+    #     level += [left]
+    # for j, h in reversed(list(enumerate(height))):
+    #     right = max(right, h)
+    #     level[j] = (min(right, level[j]))-h
+    # return sum(level)
 
     """
     Method 3: 
@@ -62,5 +62,25 @@ def trap(height: list[int]) -> int:
     # for i in range(n):
     #     res += ((min(r_max[i], l_max[i])) - height[i])
     # return res
+
+
+#! using stacks
+    s = []
+    curr, ans = 0, 0
+    while curr < len(height):
+        while s and height[curr] > height[s[-1]]:
+            top = s[-1]
+            s.pop()
+            if not s:
+                break
+            dt = curr-s[-1] - 1
+            ht = min(height[curr], height[s[-1]])-height[top]
+            ans += dt*ht
+
+        s.append(curr)
+        curr += 1
+    return ans
+
+
 height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 print(trap(height))
