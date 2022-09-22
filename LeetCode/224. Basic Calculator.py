@@ -1,34 +1,75 @@
 import math
 
+"""
+this one is not working for some test cases
+def calculate(s: str) -> int:
+    s = s.replace(" ", "")
+    s = '('+s+')'
+    st = []
+    op = []
+    curr = ''
+    for i in s:
+        if i == '(':
+            st.append(i)
+        elif i.isdigit():
+            curr += i
+        elif i in '+-':
+            if curr:
+                st.append(int(curr))
+                curr = ""
+            op.append(i)
+        elif i == ')':
+            if curr:
+                st.append(int(curr))
+                curr = ""
+            top = st.pop()
+            ans = 0
+            while top != '(':
+                r = top
+                l = st.pop()
+                if l == '(':
+                    st.append(top)
+                    break
+                if op:
+                    t = op.pop()
+
+                    if t == '+':
+                        ans = r+l
+                    elif t == '-':
+                        ans = l-r
+                    st.append(ans)
+
+                top = st.pop()
+    return st.pop()
+"""
+
 
 def calculate(s: str) -> int:
     s = s.replace(" ", "")
     s += '+'
-    st = []
+    st = [1]
+    res = 0
     num = 0
-    op = '+'
-    # num = ''
+    op = 1
     for i in s:
         if i.isdigit():
             num = (num*10)+int(i)
-            # num += i
-        else:
-            num = int(num)
-            if op == '+':
-                st.append(num)
-            elif op == '-':
-                st.append(-num)
-            elif op == '*':
-                st.append(st.pop()*num)
-            elif op == '/':
-                st.append(int(st.pop()/num))
-            # num = ''
+        elif i in '+-':
+            res += num*op*st[-1]
+            op = 1 if i == '+' else -1
             num = 0
-            op = i
-    return sum(st)
+        elif i == '(':
+            st.append(st[-1]*op)
+            op = 1
+        elif i == ')':
+            res += num*op*st[-1]
+            num = 0
+            st.pop()
+
+    return res
 
 
-s = "14-3/2"
+s = " 2-1 + 2 "
 print(calculate(s))
 """
 Example 1:
