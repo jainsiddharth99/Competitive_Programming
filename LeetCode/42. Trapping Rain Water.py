@@ -8,63 +8,72 @@ def trap(height: list[int]) -> int:
     since there is no num in list is >=3 we have to use
     rmax and calculate volume according to that
     """
-    # res = 0
-    # n = len(height)
-    # l, r = 0, n-1
-    # l_max, r_max = height[l], height[r]
-    # while l < r:
-    #     l_max, r_max = max(l_max, height[l]), max(r_max, height[r])
-    #     if l_max <= r_max:
-    #         res += l_max-height[l]
-    #         l += 1
-    #     else:
-    #         res += r_max-height[r]
-    #         r -= 1
-    # return res
+    res = 0
+    n = len(height)
+    l, r = 0, n-1
+    l_max, r_max = height[l], height[r]
+    while l < r:
+        l_max, r_max = max(l_max, height[l]), max(r_max, height[r])
+        if l_max <= r_max:
+            res += l_max-height[l]
+            l += 1
+        else:
+            res += r_max-height[r]
+            r -= 1
+    return res
 
+
+def trap(height: list[int]) -> int:
     """
     Method 2:
     we create two list which iterate left and another from end
     we add result according height filled(we select minimum)
     """
-    # level = []
-    # left, right = 0, 0
-    # for i in height:
-    #     left = max(left, i)
-    #     level += [left]
-    # for j, h in reversed(list(enumerate(height))):
-    #     right = max(right, h)
-    #     level[j] = (min(right, level[j]))-h
-    # return sum(level)
+    level = []
+    left, right = 0, 0
+    for i in height:
+        left = max(left, i)
+        level += [left]
+    for j, h in reversed(list(enumerate(height))):
+        right = max(right, h)
+        level[j] = (min(right, level[j]))-h
+    return sum(level)
 
+
+def trap(height: list[int]) -> int:
     """
     Method 3: 
     same as before just more clear
-    
+
     """
 
-    # n = len(height)
-    # res = 0
-    # l_max = []
-    # r_max = []
-    # i, j = 1, 1
-    # l_max.append(height[0])
-    # while i < n:
-    #     l_max.append(max(height[i], l_max[i-1]))
-    #     i += 1
-    # height.reverse()
-    # r_max.append(height[0])
-    # while j < n:
-    #     r_max.append(max(height[j], r_max[j-1]))
-    #     j += 1
-    # height.reverse()
-    # r_max.reverse()
-    # for i in range(n):
-    #     res += ((min(r_max[i], l_max[i])) - height[i])
-    # return res
+    n = len(height)
+    res = 0
+    l_max = []
+    r_max = []
+    i, j = 1, 1
+    l_max.append(height[0])
+    while i < n:
+        l_max.append(max(height[i], l_max[i-1]))
+        i += 1
+    height.reverse()
+    r_max.append(height[0])
+    while j < n:
+        r_max.append(max(height[j], r_max[j-1]))
+        j += 1
+    height.reverse()
+    r_max.reverse()
+    for i in range(n):
+        res += ((min(r_max[i], l_max[i])) - height[i])
+    return res
 
 
-#! using stacks
+def trap(height: list[int]) -> int:
+    """
+    Method 4: 
+    Use of stacks
+
+    """
     s = []
     curr, ans = 0, 0
     while curr < len(height):

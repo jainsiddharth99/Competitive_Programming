@@ -24,7 +24,7 @@ def removeKdigits(num: str, k: int) -> str:
         return ''.join(s)
 
 
-num = "1111111"
+num = "15432687"
 k = 3
 print(removeKdigits(num, k))
 """
