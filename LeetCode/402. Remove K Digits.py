@@ -3,31 +3,28 @@ def removeKdigits(num: str, k: int) -> str:
     if n == k:
         return '0'
     s = []
-    for i in range(n):
-        while s and s[-1] > num[i] and k > 0:
+    for i in num:
+        while s and s[-1] > i and k > 0:
             s.pop()
             k -= 1
+        s.append(i)
 
-        s.append(num[i])
-    while k > 0 and s:
-        s.pop()
-        k -= 1
-
+    if k > 0:
+        while k > 0 and s:
+            s.pop()
+            k = -1
     if not s:
         return '0'
 
     if s[0] == '0':
         while s and s[0] == '0':
             s.pop(0)
-        if not s:
-            return '0'
-
-        return ''.join(s)
+        return "".join(s) if s else '0'
     else:
         return ''.join(s)
 
 
-num = "10200"
+num = "1111111"
 k = 3
 print(removeKdigits(num, k))
 """
