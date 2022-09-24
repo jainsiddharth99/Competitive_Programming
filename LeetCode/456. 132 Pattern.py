@@ -1,4 +1,4 @@
-def find132pattern(nums: list[int]) -> bool:
+def find132pattern1(nums: list[int]) -> bool:
     n = len(nums)
     if n < 3:
         return False
@@ -15,8 +15,24 @@ def find132pattern(nums: list[int]) -> bool:
     return False
 
 
-nums = [-2, 1, 2, -2, 1, 2]
-print(find132pattern(nums))
+def find132pattern2(nums: list[int]) -> bool:
+    stack = []
+    minstack = []
+    currmin = nums[0]
+    for i in nums[1:]:
+        while stack and i > stack[-1]:
+            stack.pop()
+            minstack.pop()
+        if stack and i > minstack[-1]:
+            return True
+        stack.append(i)
+        minstack.append(currmin)
+        currmin = min(currmin, i)
+    return False
+
+
+nums = [3, 1, 4, 2]
+print(find132pattern2(nums))
 
 """
 
