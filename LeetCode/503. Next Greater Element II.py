@@ -1,9 +1,32 @@
-def nextGreaterElements(nums: list[int]) -> list[int]:
-    pass
+def nextGreaterElements1(nums: list[int]) -> list[int]:
+    n = len(nums)*2
+    res = [-1]*n
+    s = []
+    nums += nums
+    for i in range(n-1, -1, -1):
+        while s and s[-1] <= nums[i]:
+            s.pop()
+        res[i] = s[-1] if s else -1
+        s.append(nums[i])
+    return res[:n//2]
 
 
-nums = [1, 2, 3, 4, 3]
+def nextGreaterElements2(nums: list[int]) -> list[int]:
+    n = len(nums)
+    res = [-1]*n
+    s = []
+    nums += nums
+    for i in range(2*(n-1), -1, -1):
+        while s and s[-1] <= nums[i % n]:
+            s.pop()
+        res[i % n] = s[-1] if s else -1
+        s.append(nums[i % n])
+    return res
+
+
+nums = [100, 1, 11, 1, 120, 111, 123, 1, -1, -100]
 print(nextGreaterElements(nums))
+
 
 """
 Example 1:
