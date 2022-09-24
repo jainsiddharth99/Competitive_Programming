@@ -17,21 +17,18 @@ def find132pattern1(nums: list[int]) -> bool:
 
 def find132pattern2(nums: list[int]) -> bool:
     stack = []
-    minstack = []
     currmin = nums[0]
     for i in nums[1:]:
-        while stack and i > stack[-1]:
+        while stack and i >= stack[-1][0]:
             stack.pop()
-            minstack.pop()
-        if stack and i > minstack[-1]:
+        if stack and i > stack[-1][1]:
             return True
-        stack.append(i)
-        minstack.append(currmin)
+        stack.append([i, currmin])
         currmin = min(currmin, i)
     return False
 
 
-nums = [3, 1, 4, 2]
+nums = [-2, 1, 1]
 print(find132pattern2(nums))
 
 """
