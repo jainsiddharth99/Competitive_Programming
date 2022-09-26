@@ -19,7 +19,7 @@ def maxChunksToSorted2(arr: list[int]) -> int:
     return len(s)
 
 
-arr = [2, 0, 1]
+arr = [2, 1, 3, 4, 4]
 print(maxChunksToSorted2(arr))
 
 """
