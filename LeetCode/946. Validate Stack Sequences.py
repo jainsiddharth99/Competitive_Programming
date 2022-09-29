@@ -1,11 +1,11 @@
 def validateStackSequences(pushed: list[int], popped: list[int]) -> bool:
     s = []
-    j = 0
+    popped = popped[::-1]
     for i in pushed:
         s.append(i)
-        while s and s[-1] == popped[j]:
+        while s and s[-1] == popped[-1]:
             s.pop()
-            j += 1
+            popped.pop()
     return len(s) == 0
 
 
