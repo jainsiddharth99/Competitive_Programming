@@ -19,10 +19,20 @@ def carFleet(target: int, position: list[int], speed: list[int]) -> int:
     return len(st)
 
 
-target = 10
-position = [6, 8]
-speed = [3, 2]
-print(carFleet(target, position, speed))
+def carFleet2(target, pos, speed):
+    time = [float(target - p) / s for p, s in sorted(zip(pos, speed))]
+    res = cur = 0
+    for t in time[::-1]:
+        if t > cur:
+            res += 1
+            cur = t
+    return res
+
+
+target = 12
+position = [10, 8, 0, 5, 3]
+speed = [2, 4, 1, 1, 3]
+print(carFleet2(target, position, speed))
 """
 
 Example 1:
