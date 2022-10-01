@@ -1,8 +1,15 @@
 def getCollisionTimes(cars: list[list[int]]) -> list[float]:
     n = len(cars)
     ans = [-1]*n
-    s = []
+    st = []
     for i in range(n-1, -1, -1):
+        p, s = cars[i]
+        while st and (s <= cars[st[-1]][1] or (cars[st[-1]][0]-p)/(s-cars[st[-1]][1]) >= ans[st[-1]] > 0):
+            st.pop()
+        if st:
+            ans[i] = (cars[st[-1]][0]-p)/(s-cars[st[-1]][1])
+        st.append(i)
+    return ans
 
 
 cars = [[1, 2], [2, 1], [4, 3], [7, 2]]
