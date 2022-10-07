@@ -18,8 +18,28 @@ def maxSlidingWindow(nums: list[int], k: int) -> list[int]:
     return res[k-1:]
 
 
-nums = [1, 3, -1, -3, 5, 3, 6, 7]
-print(maxSlidingWindow(nums, 3))
+def maxSlidingWindow2(nums: list[int], k: int) -> list[int]:
+    q = deque()
+    res = []
+    l = r = 0
+    n = len(nums)
+    while r < n:
+        while q and nums[q[-1]] <= nums[r]:
+            q.pop()
+        q.append(r)
+
+        if l > q[0]:
+            q.popleft()
+
+        if r+1 >= k:
+            res.append(nums[q[0]])
+            l += 1
+        r += 1
+    return res
+
+
+nums = [8, 7, 6, 9]
+print(maxSlidingWindow2(nums, 2))
 
 """
 Example 1:
