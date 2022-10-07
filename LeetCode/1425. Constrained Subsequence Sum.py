@@ -8,7 +8,7 @@ def constrainedSubsetSum(nums: list[int], k: int) -> int:
 
     for i, num in enumerate(nums):
         if i > k and q[0] == dp[i-k-1]:
-            q.popleft
+            q.popleft()
         dp[i] = max(q[0] if q else 0, 0)+num
 
         while q and q[-1] < dp[i]:
@@ -17,7 +17,7 @@ def constrainedSubsetSum(nums: list[int], k: int) -> int:
     return max(dp)
 
 
-nums = [10, 2, -10, 5, 20]
+nums = [10, -2, -10, -5, 20]
 print(constrainedSubsetSum(nums, 2))
 
 
