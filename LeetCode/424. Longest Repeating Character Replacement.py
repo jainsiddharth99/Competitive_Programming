@@ -18,3 +18,9 @@ class Solution:
 
             r += 1
         return len(s)-l
+
+
+A = Solution()
+s = "AABABBA"
+k = 1
+print(A.characterReplacement(s, k))
