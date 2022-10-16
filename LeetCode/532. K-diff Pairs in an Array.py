@@ -12,9 +12,7 @@ def findPairs1(nums: list[int], k: int) -> int:
 
 # working
 def findPairs2(nums: list[int], k: int) -> int:
-    res = set()
-    i = 0
-    j = 1
+    res, i, j = set(), 0, 1
     nums.sort()
     while j < len(nums):
         if nums[j]-nums[i] == k:
