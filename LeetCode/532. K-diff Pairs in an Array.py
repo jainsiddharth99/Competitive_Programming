@@ -9,9 +9,8 @@ def findPairs1(nums: list[int], k: int) -> int:
                 res.add((nums[j], nums[i]))
     return len(res)
 
+
 # working
-
-
 def findPairs2(nums: list[int], k: int) -> int:
     res = set()
     i = 0
@@ -22,12 +21,15 @@ def findPairs2(nums: list[int], k: int) -> int:
             res.add((nums[i], nums[j]))
             i += 1
             j = i+1
+        elif nums[j]-nums[i] > k:
+            i += 1
+            j = i+1
         else:
             j += 1
 
     return len(res)
 
 
-nums = [3, 1, 4, 1, 5]
-k = 2
+nums = [1, 1, 1, 2, 2]
+k = 0
 print(findPairs2(nums, k))
