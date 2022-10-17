@@ -1,6 +1,11 @@
-from collections import Counter
+from collections import Counter, defaultdict
 
 
-class Solution:
-    def topKFrequent(self, words: List[str], k: int) -> List[str]:
-        return [k for k, v in Counter(sorted(words)).most_common(k)]
+def topKFrequent1(words: list[str], k: int) -> list[str]:
+    return [k for k, v in Counter(sorted(words)).most_common(k)]
+
+
+def topKFrequent2(words: list[str], k: int) -> list[str]:
+    dt = Counter(words)
+    x = sorted(dt, key=lambda x: (-dt[x], x))
+    return x[:k]
