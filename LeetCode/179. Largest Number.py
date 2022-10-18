@@ -1,12 +1,20 @@
-import functools
+from functools import cmp_to_key
 
 
-class Solution:
-    def largestNumber(self, nums: List[int]) -> str:
-        def compare(x, y):
-            xy = int(str(x)+str(y))
-            yx = int(str(y)+str(x))
-            return yx-xy
+def largestNumber(nums: list[int]) -> str:
+    for i, n in enumerate(nums):
+        nums[i] = str(n)
 
-        nums.sort(key=functools.cmp_to_key(compare))
-        return "".join([str(i) for i in nums])
+    def compare(n1, n2):
+        if n1+n2 > n2+n1:
+            return -1
+        else:
+            return 1
+
+    nums = sorted(nums, key=cmp_to_key(compare))
+
+    return str(int("".join(nums)))
+
+
+nums = [3, 30, 34, 5, 9]
+print(largestNumber(nums))
